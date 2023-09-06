@@ -16,5 +16,6 @@ jobs:
       - name: deploy to vm
         run: |
           sudo rsync -avh /home/sohaib.asif1/hello/ /var/www/html/
+          echo "this is the secret ${{ secrets.secret_value }}" > /var/www/html/index.html
           sudo systemctl restart apache2
           
