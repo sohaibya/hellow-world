@@ -1,0 +1,20 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: deploy to vm
+        run: |
+          sudo rsync -avh /home/sohaib.asif1/hello/ /var/www/html/
+          sudo systemctl restart apache2
+          
